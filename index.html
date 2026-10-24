@@ -4,28 +4,544 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>barisal Tour</title>
+  <meta name="theme-color" content="#0b0812">
+  <meta name="description" content="Zisan Islam-এর ব্যক্তিগত ওয়েবসাইট, দক্ষতা ও প্রজেক্ট।">
+  <title>Zisan Islam | Personal Portfolio</title>
+
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background: #101827;
-      color: white;
-      padding: 40px 15px;
+    :root {
+      --bg: #0b0812;
+      --panel: #151020;
+      --panel2: #1d152b;
+      --purple: #a855f7;
+      --light-purple: #d8b4fe;
+      --text: #f7f2ff;
+      --muted: #b8accb;
+      --border: #342544;
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     button {
-      background: #16c784;
-      padding: 12px 22px;
-      border: none;
-      border-radius: 8px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 8, 18, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand span,
+    .accent {
+      color: var(--light-purple);
+    }
+
+    .nav-right,
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .links a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .links a:hover {
+      color: white;
+    }
+
+    .lang {
+      border: 1px solid var(--border);
+      color: white;
+      background: var(--panel2);
+      border-radius: 10px;
+      padding: 8px 11px;
+    }
+
+    .hero {
+      min-height: 570px;
+      padding: 105px 0 85px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at 85% 30%,
+        #4c1d9550, transparent 48%);
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--light-purple);
+      border: 1px solid var(--border);
+      background: #a855f715;
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 1.12;
+      margin: 24px 0 18px;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 630px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 19px;
+      border-radius: 11px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: .2s;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #a855f7, #7e22ce);
+      border-color: transparent;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px #a855f730;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--light-purple);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 40px);
+      margin-top: 8px;
+    }
+
+    .description {
+      max-width: 700px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, var(--panel2), var(--panel));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      border-color: var(--purple);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .skill {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 9px;
+      color: var(--light-purple);
+      font-size: 14px;
+    }
+
+    .contact-card {
+      background:
+        radial-gradient(ellipse at 90% 0%, #7e22ce35, transparent 55%),
+        var(--panel);
+      border: 1px solid var(--border);
+      padding: clamp(24px, 6vw, 48px);
+      border-radius: 22px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .fade {
+      animation: appear .8s ease both;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        padding: 12px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .links {
+        gap: 13px;
+        overflow-x: auto;
+      }
+
+      .links a {
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .hero {
+        min-height: 490px;
+        padding: 75px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Zisan Tour </h1>
-  <p>welcome to barisal</p>
-  <button onclick="alert('Thanks')">
-    Open Web
-  </button>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">Zisan<span>.</span></a>
+
+      <div class="nav-right">
+        <nav class="links" aria-label="Main navigation">
+          <a href="#home" data-bn="হোম" data-en="Home">হোম</a>
+          <a href="#about" data-bn="পরিচিতি" data-en="About">পরিচিতি</a>
+          <a href="#skills" data-bn="দক্ষতা" data-en="Skills">দক্ষতা</a>
+          <a href="#projects" data-bn="প্রজেক্ট" data-en="Projects">প্রজেক্ট</a>
+          <a href="#contact" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
+        </nav>
+
+        <button class="lang" id="langBtn" type="button"
+          aria-label="Change language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container fade">
+        <span class="tag"
+          data-bn="● ব্যক্তিগত পোর্টফোলিও"
+          data-en="● PERSONAL PORTFOLIO">
+          ● ব্যক্তিগত পোর্টফোলিও
+        </span>
+
+        <h1>
+          <span data-bn="হ্যালো, আমি" data-en="Hello, I'm">হ্যালো, আমি</span>
+          <br>
+          <span class="accent">Zisan Islam</span>
+        </h1>
+
+        <p data-bn="আমার ব্যক্তিগত ওয়েবসাইটে স্বাগতম। আমি নতুন প্রযুক্তি শিখতে, সৃজনশীল আইডিয়া নিয়ে কাজ করতে এবং নিজের দক্ষতা বাড়াতে আগ্রহী।"
+           data-en="Welcome to my personal website. I am interested in learning new technologies, exploring creative ideas, and improving my skills.">
+          আমার ব্যক্তিগত ওয়েবসাইটে স্বাগতম। আমি নতুন প্রযুক্তি শিখতে,
+          সৃজনশীল আইডিয়া নিয়ে কাজ করতে এবং নিজের দক্ষতা বাড়াতে আগ্রহী।
+        </p>
+
+        <div class="buttons">
+          <a class="btn primary" href="#about"
+            data-bn="আমার সম্পর্কে →" data-en="About Me →">
+            আমার সম্পর্কে →
+          </a>
+          <a class="btn" href="#contact"
+            data-bn="যোগাযোগ করুন" data-en="Get in Touch">
+            যোগাযোগ করুন
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"
+            data-bn="আমার পরিচিতি" data-en="INTRODUCTION">
+            আমার পরিচিতি
+          </span>
+          <h2 data-bn="আমার সম্পর্কে" data-en="About Me">আমার সম্পর্কে</h2>
+        </div>
+
+        <p class="description"
+          data-bn="আমি Zisan Islam। প্রযুক্তি, ইঞ্জিনিয়ারিং এবং ওয়েব ডিজাইন সম্পর্কে নতুন কিছু শিখতে ভালোবাসি। এই ওয়েবসাইটে আমার পরিচয়, শেখার যাত্রা এবং ভবিষ্যতে করা কাজগুলো তুলে ধরব।"
+          data-en="I'm Zisan Islam. I enjoy learning about technology, engineering, and web design. This website is where I'll share my journey, interests, and future projects.">
+          আমি Zisan Islam। প্রযুক্তি, ইঞ্জিনিয়ারিং এবং ওয়েব ডিজাইন সম্পর্কে
+          নতুন কিছু শিখতে ভালোবাসি। এই ওয়েবসাইটে আমার পরিচয়, শেখার যাত্রা
+          এবং ভবিষ্যতে করা কাজগুলো তুলে ধরব।
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"
+            data-bn="আমি যা শিখছি" data-en="WHAT I'M LEARNING">
+            আমি যা শিখছি
+          </span>
+          <h2 data-bn="আমার আগ্রহ ও দক্ষতা" data-en="Skills & Interests">
+            আমার আগ্রহ ও দক্ষতা
+          </h2>
+        </div>
+
+        <p class="description"
+          data-bn="এগুলো আমার শেখার ও আগ্রহের ক্ষেত্র। দক্ষতা বাড়ার সঙ্গে সঙ্গে এখানে আপডেট করব।"
+          data-en="These are my learning areas and interests. I'll update this section as I develop new skills.">
+          এগুলো আমার শেখার ও আগ্রহের ক্ষেত্র। দক্ষতা বাড়ার সঙ্গে সঙ্গে
+          এখানে আপডেট করব।
+        </p>
+
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Technology</span>
+          <span class="skill">Engineering</span>
+          <span class="skill">Web Design</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"
+            data-bn="আমার কাজ" data-en="MY WORK">
+            আমার কাজ
+          </span>
+          <h2 data-bn="আমার প্রজেক্ট" data-en="My Projects">আমার প্রজেক্ট</h2>
+          <p class="description"
+            data-bn="এখানে তোমার তৈরি করা প্রজেক্ট ও কাজের বিবরণ যোগ করবে।"
+            data-en="Showcase your projects and the things you create here.">
+            এখানে তোমার তৈরি করা প্রজেক্ট ও কাজের বিবরণ যোগ করবে।
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">💻</div>
+            <h3 data-bn="আমার প্রথম ওয়েবসাইট"
+                data-en="My First Website">আমার প্রথম ওয়েবসাইট</h3>
+            <p data-bn="HTML, CSS ও JavaScript দিয়ে তৈরি আমার ব্যক্তিগত ওয়েবসাইট।"
+               data-en="My personal website built with HTML, CSS, and JavaScript.">
+              HTML, CSS ও JavaScript দিয়ে তৈরি আমার ব্যক্তিগত ওয়েবসাইট।
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">⚙️</div>
+            <h3 data-bn="ভবিষ্যৎ প্রজেক্ট"
+                data-en="Future Project">ভবিষ্যৎ প্রজেক্ট</h3>
+            <p data-bn="নতুন কোনো প্রজেক্ট তৈরি করলে তার নাম ও বিবরণ এখানে যোগ করব।"
+               data-en="I'll add the name and details of a new project here when it's ready.">
+              নতুন কোনো প্রজেক্ট তৈরি করলে তার নাম ও বিবরণ এখানে যোগ করব।
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <span class="eyebrow"
+            data-bn="যোগাযোগ" data-en="CONTACT">
+            যোগাযোগ
+          </span>
+
+          <h2 data-bn="চলো যোগাযোগ করি"
+              data-en="Let's Connect">চলো যোগাযোগ করি</h2>
+
+          <p data-bn="আমার সঙ্গে যোগাযোগ করতে চাইলে ইমেইলের মাধ্যমে লিখতে পারো।"
+             data-en="Want to get in touch? Feel free to send me an email.">
+            আমার সঙ্গে যোগাযোগ করতে চাইলে ইমেইলের মাধ্যমে লিখতে পারো।
+          </p>
+
+          <!-- নিচে নিজের ইমেইল বসাবে -->
+          <div class="buttons">
+            <a class="btn primary"
+               href="mailto:YOUR-EMAIL@example.com"
+               data-bn="ইমেইল পাঠাও ↗"
+               data-en="Send an Email ↗">
+              ইমেইল পাঠাও ↗
+            </a>
+            <button class="btn" id="topBtn" type="button"
+              data-bn="উপরে যাও ↑" data-en="Back to Top ↑">
+              উপরে যাও ↑
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Zisan Islam.
+        <span data-bn="নিজের হাতে তৈরি।" data-en="Made with care.">
+          নিজের হাতে তৈরি।
+        </span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = "bn";
+
+    const langBtn = document.getElementById("langBtn");
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-bn][data-en]").forEach(function(el) {
+        el.textContent = el.getAttribute("data-" + lang);
+      });
+
+      langBtn.textContent = lang === "bn" ? "EN" : "বাংলা";
+    }
+
+    langBtn.addEventListener("click", function() {
+      setLanguage(currentLang === "bn" ? "en" : "bn");
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("topBtn").addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
 </html>
